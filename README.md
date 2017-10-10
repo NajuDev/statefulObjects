@@ -7,7 +7,7 @@ Plain objects that can have callbacks subscribed to their properties.
 ```javascript
 var q = statefulObject( { foo : 'bar', widgets : 'doodads' } );
 
-q.foo;    // 'widgets'
+q.foo;    // 'bar'
 
 q.subscribe.foo( 'hello', () => alert(q.foo) );
 
