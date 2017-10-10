@@ -12,4 +12,7 @@ q.foo;    // 'widgets'
 q.subscribe.foo( 'hello', () => alert(q.foo) );
 
 q.foo = 'blah';   // alerts 'blah'
+
+// to remove callback
+q.unsubscribe.foo( 'hello' );
 ```
