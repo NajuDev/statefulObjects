@@ -1,0 +1,19 @@
+{
+  "name": "statefulobjects",
+  "version": "1.0.0",
+  "description": "Plain objects that can have callbacks subscribed to their properties.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NajuDev/statefulObjects.git"
+  },
+  "author": "Nazeerudeen Ruhomutally",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/NajuDev/statefulObjects/issues"
+  },
+  "homepage": "https://github.com/NajuDev/statefulObjects#readme"
+}
