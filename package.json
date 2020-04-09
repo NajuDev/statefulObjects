@@ -2,7 +2,7 @@
   "name": "statefulobjects",
   "version": "1.0.0-alpha",
   "description": "Plain objects that can have callbacks subscribed to their properties.",
-  "main": "dist/index.min.js",
+  "main": "dist/stateful-object.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --env.production"
