@@ -8,7 +8,8 @@ module.exports = (env) => (
             path: path.resolve(__dirname, 'dist'),
             filename: 'stateful-object.js',
             library: 'statefulObjects',
-            libraryTarget: 'umd'
+            libraryTarget: 'umd',
+            libraryExport: 'default'
         },
         module: {
             rules: [
