@@ -34,11 +34,9 @@ export function StatefulObject(config) {
                     return master[i].val;
                 },
                 set: function(x) {
-                    // run callbacks
                     !master[i].dontCallAgain ?
                         (
                             master[i].val = x,
-                            // console.log('call again?', true),
                             master[i].dontCallAgain = true,
                             invokeCallbacks(i)
                         ) : (
