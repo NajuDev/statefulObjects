@@ -1,9 +1,14 @@
-export function StatefulObject() {
-    var master = Object.assign(Object.create(null), config),
-        obj = {};
+export function StatefulObject(config) {
+    const master = Object.assign(Object.create(null), config);
 
-    obj.subscribe = Object.create(null);
-    obj.unsubscribe = Object.create(null);
+    Object.defineProperties(this, {
+        subscribe: {
+            value: Object.create(null)
+        },
+        unsubscribe: {
+            value: Object.create(null)
+        },
+    });
 
     const invokeCallbacks = function invokeCallbacks(prop) {
         for (let c in master[prop].callbacks) {
@@ -13,6 +18,9 @@ export function StatefulObject() {
     };
 
     for (let i in config) {
+        if (i === '__proto__' || i === 'prototype') {
+            continue;
+        }
         if (config.hasOwnProperty(i)) {
 
             master[i] = {
@@ -21,7 +29,7 @@ export function StatefulObject() {
                 dontCallAgain: false
             };
 
-            Object.defineProperty(obj, i, {
+            Object.defineProperty(this, i, {
                 get: function() {
                     return master[i].val;
                 },
@@ -34,26 +42,27 @@ export function StatefulObject() {
                             master[i].dontCallAgain = true,
                             invokeCallbacks(i)
                         ) : (
-                            console.warn('Recursive property assignment: a subscribed callback attempted to change a property with a callback')
+                            console && console.warn('Recursive property assignment: a subscribed callback attempted to change a property with a callback')
                         );
                 }
             });
 
-            obj.subscribe[i] = function (name, fn) {
-                if (typeof name === 'string' && typeof fn === 'function') {
-                    master[i].callbacks[name] = fn;
+            Object.defineProperty(this.subscribe, i, {
+                value: function (name, fn) {
+                    if (typeof name === 'string' && typeof fn === 'function') {
+                        master[i].callbacks[name] = fn;
+                    }
+                    else {
+                        console.error('unable to subscribe function');
+                    }
                 }
-                else {
-                    console.error('unable to subscribe function');
+            });
+
+            Object.defineProperty(this.unsubscribe, i, {
+                value: function (name) {
+                    delete master[i].callbacks[name];
                 }
-            };
-
-            obj.unsubscribe[i] = function (name) {
-                delete master[i].callbacks[name];
-            };
-
+            });
         }
     };
-
-    return obj;
 };
