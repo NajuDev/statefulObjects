@@ -1,5 +1,5 @@
-import { StatefulObject } from 'src/stateful-object';
+import { StatefulObject } from './src/stateful-object';
 
-export function statefulObject(config) {
+export default function statefulObject(config) {
 	return new StatefulObject(config);
 };

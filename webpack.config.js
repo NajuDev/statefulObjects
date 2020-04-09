@@ -3,7 +3,7 @@ const path = require('path');
 module.exports = (env) => (
     {
         mode: env && env.production ? 'production' : 'development',
-        entry: path.resolve(__dirname, 'src/stateful-object.js'),
+        entry: path.resolve(__dirname, 'index.js'),
         output: {
             path: path.resolve(__dirname, 'dist'),
             filename: 'stateful-object.js',
