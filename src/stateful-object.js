@@ -11,13 +11,13 @@ export function StatefulObject(config) {
     });
 
     const invokeCallbacks = function invokeCallbacks(prop) {
-        for (let c in master[prop].callbacks) {
+        for (const c in master[prop].callbacks) {
             master[prop].callbacks[c]();
         };
         master[prop].dontCallAgain = false;
     };
 
-    for (let i in config) {
+    for (const i in config) {
         if (i === '__proto__' || i === 'prototype') {
             continue;
         }
@@ -48,10 +48,10 @@ export function StatefulObject(config) {
             Object.defineProperty(this.subscribe, i, {
                 value: function (name, fn) {
                     if (typeof name === 'string' && typeof fn === 'function') {
-                        master[i].callbacks[name] = fn;
+                        (name !== '__proto__') && (name !== 'prototype') && (master[i].callbacks[name] = fn);
                     }
                     else {
-                        console.error('unable to subscribe function');
+                        console && console.error('unable to subscribe function');
                     }
                 }
             });
