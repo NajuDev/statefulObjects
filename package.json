@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --env.production",
-    "build:dev": "webpack"
+    "build:dev": "webpack",
+    "prepare": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -24,5 +25,8 @@
     "babel-loader": "^8.1.0",
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11"
-  }
+  },
+  "files": [
+    "dist/stateful-object.js"
+  ]
 }
