@@ -1,6 +1,6 @@
 {
   "name": "statefulobjects",
-  "version": "1.0.0-alpha",
+  "version": "1.0.1-alpha",
   "description": "Plain objects that can have callbacks subscribed to their properties.",
   "main": "dist/stateful-object.js",
   "scripts": {
@@ -21,7 +21,8 @@
   "homepage": "https://github.com/NajuDev/statefulObjects#readme",
   "devDependencies": {
     "@babel/core": "^7.9.0",
-    "@babel/preset-env": "^7.9.5",
+    "@babel/plugin-transform-object-assign": "^7.10.4",
+    "@babel/preset-env": "^7.11.5",
     "babel-jest": "^25.3.0",
     "babel-loader": "^8.1.0",
     "jest": "^25.3.0",
