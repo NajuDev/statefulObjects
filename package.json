@@ -1,6 +1,6 @@
 {
   "name": "statefulobjects",
-  "version": "1.0.1-alpha",
+  "version": "1.0.1-alpha.2",
   "description": "Plain objects that can have callbacks subscribed to their properties.",
   "main": "dist/stateful-object.js",
   "scripts": {
