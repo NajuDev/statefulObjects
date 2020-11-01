@@ -99,6 +99,25 @@ describe('StatefulObject', () => {
             );
     });
 
+    test('Each property in the returned instance are enumerable, but not the subscribe and unsubscribe methods', () => {
+        const a = 123;
+        const b = 456;
+        const configObject = {
+            a,
+            b,
+        };
+        const foo = new StatefulObject(configObject);
+
+        expect(foo.propertyIsEnumerable('a'))
+            .toBe(true);
+        expect(foo.propertyIsEnumerable('b'))
+            .toBe(true);
+        expect(foo.propertyIsEnumerable('subscribe'))
+            .toBe(false);
+        expect(foo.propertyIsEnumerable('unsubscribe'))
+            .toBe(false);
+    });
+
 
     test('Subscribed functions are run when values are set', () => {
         const a = 123;

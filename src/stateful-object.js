@@ -42,7 +42,8 @@ export function StatefulObject(config) {
                         ) : (
                             console && console.warn('Recursive property assignment: a subscribed callback attempted to change a property with a callback')
                         );
-                }
+                },
+                enumerable: true,
             });
 
             Object.defineProperty(this.subscribe, i, {
